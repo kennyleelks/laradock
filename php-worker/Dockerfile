@@ -215,6 +215,18 @@ RUN if [ ${INSTALL_TAINT} = true ]; then \
     docker-php-ext-enable taint \
 ;fi
 
+
+###########################################################################
+# MessagePack
+###########################################################################
+
+ARG PHP_WORKER_INSTALL_MSGPACK=false
+
+RUN if [ ${PHP_WORKER_INSTALL_MSGPACK} = true ]; then \
+    pecl install msgpack; \
+    docker-php-ext-enable msgpack \
+;fi
+
 #
 #--------------------------------------------------------------------------
 # Optional Supervisord Configuration

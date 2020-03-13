@@ -1273,6 +1273,20 @@ RUN if [ ${INSTALL_MAILPARSE} = true ]; then \
 ;fi
 
 ###########################################################################
+# MessagePack:
+###########################################################################
+
+USER root
+
+ARG WORKSPACE_INSTALL_MSGPACK=false
+
+RUN if [ ${WORKSPACE_INSTALL_MSGPACK} = true ]; then \
+  pecl install msgpack; \
+  echo "extension=msgpack.so" >> /etc/php/${LARADOCK_PHP_VERSION}/mods-available/msgpack.ini && \
+  ln -s /etc/php/${LARADOCK_PHP_VERSION}/mods-available/msgpack.ini /etc/php/${LARADOCK_PHP_VERSION}/cli/conf.d/35-msgpack.ini \
+;fi
+
+###########################################################################
 # GNU Parallel:
 ###########################################################################
 

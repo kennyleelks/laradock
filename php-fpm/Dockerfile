@@ -899,6 +899,17 @@ RUN if [ ${INSTALL_CACHETOOL} = true ]; then \
 ;fi
 
 ###########################################################################
+# MessagePack:
+###########################################################################
+
+ARG PHP_FPM_INSTALL_MSGPACK=false
+
+RUN if [ ${PHP_FPM_INSTALL_MSGPACK} = true ]; then \
+    pecl install msgpack; \
+    docker-php-ext-enable msgpack \
+;fi
+
+###########################################################################
 # Check PHP version:
 ###########################################################################
 
